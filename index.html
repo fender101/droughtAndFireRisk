@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Drought and Fire Map</title>
-
-  <!-- Leaflet CSS & JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-  crossorigin=""></script>
-
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
 </head>
-
 <body>
-  <!-- The div where we will inject our map -->
-  <div id="map"></div>
 
-  <!-- API key -->
-  <script type="text/javascript" src="config.js"></script>
-  <!-- JS -->
-  <script type="text/javascript" src="logic.js"></script>
+<div id='map'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmVuZGVyMTAxIiwiYSI6ImNqcnhzbHBsMjBxeG80M3VrY2pyN2x2ZTIifQ.qh6jEOv7_wcwUpfl_boAaw';
+    var tileset = 'mapbox.streets';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v8',
+        center: [-121.895, 37.3394], // starting position
+        zoom: 5 // starting zoom
+    });
+
+    map.on('load', function () {
+        map.addSource('aerisweather-radar', {
+            "type": 'raster',
+            "tiles": [
+                'https://maps1.aerisapi.com/XPvRjjJwk7jY8JHijPi0L_zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP/radar/{z}/{x}/{y}/current.png',
+                'https://maps2.aerisapi.com/XPvRjjJwk7jY8JHijPi0L_zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP/radar/{z}/{x}/{y}/current.png',
+                'https://maps3.aerisapi.com/XPvRjjJwk7jY8JHijPi0L_zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP/radar/{z}/{x}/{y}/current.png',
+                'https://maps4.aerisapi.com/XPvRjjJwk7jY8JHijPi0L_zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP/radar/{z}/{x}/{y}/current.png'
+            ],
+            "tileSize": 256,
+            "attribution": "<a href='https://www.aerisweather.com/'>AerisWeather</a>"
+        });
+        map.addLayer({
+            "id": "radar-tiles",
+            "type": "raster",
+            "source": "aerisweather-radar",
+            "minzoom": 0,
+            "maxzoom":22
+        });
+    });
+</script>
 </body>
 </html>
