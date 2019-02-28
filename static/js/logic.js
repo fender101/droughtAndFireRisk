@@ -18,6 +18,7 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 var APILink = "https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=code&format=geojson&client_id=XPvRjjJwk7jY8JHijPi0L&client_secret=zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP";
 
 var geojson;
+var lyrChart;
 
 // Grab data with d3
 d3.json(APILink, function(data) {
@@ -32,7 +33,7 @@ d3.json(APILink, function(data) {
     scale: ["#ffffb2", "#b10026"],
 
     // Number of breaks in step range
-    steps: 5,
+    steps: 4,
     
     // q for quantile, e for equidistant, k for k-means
     mode: "q",
@@ -40,7 +41,7 @@ d3.json(APILink, function(data) {
       // Border color
       color: "#fff",
       weight: 2,
-      // fillOpacity: 0.9
+      fillOpacity: 0.6
     },
 
     // function getColor(d) {
@@ -53,11 +54,16 @@ d3.json(APILink, function(data) {
     // Binding a pop-up to each layer
     onEachFeature: function(feature, layer) {
       layer.bindPopup(feature.properties.details.risk.type + " - " + feature.properties.details.risk.name);
-    }
+    },
   }).addTo(myMap);
 
+  lyrChart = L.imageOverlay("./chart.png", [[36.05, -132.05], [34.05, -122.05]]).addTo(myMap);
+
+
   // Set up the legend
-  var legend = L.control({ position: "bottomleft" });
+  var legend = L.control({ position: "topleft" });
+  // var chart = L.control({position: "bottomleft"});
+
   legend.onAdd = function() {
     var div = L.DomUtil.create("div", "info legend");
     var limits = geojson.options.limits;

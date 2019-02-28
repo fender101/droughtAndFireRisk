@@ -27,6 +27,7 @@ html {
 
 .legend ul {
   padding: 0;
+  float: right;
   margin: 0;
   clear: both;
   list-style-type: none;
