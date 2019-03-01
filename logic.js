@@ -79,15 +79,6 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
   function(data) {
     droughtData = data;
 
-// var map = L.map('map').setView([37.09, -120.71], 6);
-	// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmVuZGVyMTAxIiwiYSI6ImNqcnhzbHBsMjBxeG80M3VrY2pyN2x2ZTIifQ.qh6jEOv7_wcwUpfl_boAaw', {
-	// 	maxZoom: 18,
-	// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-	// 		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-	// 		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	// 	id: 'mapbox.light'
-	// }).addTo(map);
-
 	// control that shows state info on hover
 	var info = L.control();
 
@@ -97,11 +88,11 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 		return this._div;
 	};
 
-	info.update = function (props) {
-		this._div.innerHTML = '<h4>Drought Status</h4>' +  (props ?
-			'<b>' + props.name + '</b><br />' + props.type
-			: 'Hover over drought area')
-	};
+	// info.update = function (props) {
+	// 	this._div.innerHTML = '<h4>Drought Status</h4>' +  (props ?
+	// 		'<b>' + props.name + '</b><br />' + props.type
+	// 		: 'Hover over drought area')
+	// };
 
 	info.addTo(myMap);
 
