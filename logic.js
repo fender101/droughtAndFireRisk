@@ -1,0 +1,197 @@
+// Create a GeoJSON layer containing the features array on the fire and drought objects
+var fire = L.geoJson(null, {
+    filter: function() {
+        return true;
+        }
+});
+
+var drought = L.geoJson(null, {
+  filter: function() {
+      return true;
+      }
+});
+
+// Define base layers: streetmap and darkmap layers
+var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.streets",
+    accessToken: API_KEY
+});
+
+
+var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.dark",
+    accessToken: API_KEY
+  });
+
+
+// Define a baseMaps object to hold base layers
+  var baseMaps = {
+    "Street Map": streetmap,
+    "Dark Map": darkmap
+  };
+
+  // Create overlay object to hold overlay layer
+  var overlayMaps = {
+    CalFire: fire,
+    Drought: drought
+  };
+
+  // Create map, giving it the streetmap, fire and drought layers to display on load
+  var myMap = L.map("map", {
+    center: [37.09, -120.71],
+    zoom: 6,
+    layers: [streetmap, fire, drought]
+  });
+
+  // Create a layer control; pass in baseMaps and overlayMaps; add the layer control to the map
+  L.control.layers(baseMaps, overlayMaps, {
+    collapsed: false
+  }).addTo(myMap);
+
+
+// Omnivore will AJAX-request this file behind the scenes and parse it
+omnivore.csv('./fire.csv').on('ready', function(layer) {
+    this.eachLayer(function(marker) {
+      marker.setIcon(L.icon({
+        iconUrl: './fire-element.png',
+        iconSize: [29, 24],
+        iconAnchor: [9, 21],
+        popupAnchor: [0, -14]
+      }));
+
+      console.log (marker.toGeoJSON())
+        marker.bindPopup(marker.toGeoJSON().properties.Location + ', ' +
+        marker.toGeoJSON().properties.Deaths);
+    });
+
+  }).addTo(fire);
+
+  
+//Drought layer code
+
+var droughtData = {};
+
+d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=code&format=geojson&client_id=XPvRjjJwk7jY8JHijPi0L&client_secret=zFhTundlhjQ7YzfDD30Vo5w1VKdhlhwLKL2UkuBP",
+  function(data) {
+    droughtData = data;
+
+// var map = L.map('map').setView([37.09, -120.71], 6);
+	// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmVuZGVyMTAxIiwiYSI6ImNqcnhzbHBsMjBxeG80M3VrY2pyN2x2ZTIifQ.qh6jEOv7_wcwUpfl_boAaw', {
+	// 	maxZoom: 18,
+	// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+	// 		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+	// 		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	// 	id: 'mapbox.light'
+	// }).addTo(map);
+
+	// control that shows state info on hover
+	var info = L.control();
+
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	info.update = function (props) {
+		this._div.innerHTML = '<h4>Drought Status</h4>' +  (props ?
+			'<b>' + props.name + '</b><br />' + props.type
+			: 'Hover over drought area')
+	};
+
+	info.addTo(myMap);
+
+	// get color depending on drought condition value
+	function getColor(d) {
+		return  d == 4  ? '#800026' :
+			      d == 3  ? '#BD0026' :
+				    d == 2  ? '#E31A1C' :
+				    d == 1  ? '#FC4E2A' :
+            d == 0  ? '#FD8D3C' :
+                		  '#FFEDA0' ;
+	}
+
+	function style(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.details.risk.code)
+		};
+	};
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+		info.update(layer.feature.properties);
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		myMap.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	geojson = L.geoJson(droughtData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(myMap);
+
+	var legend = L.control(  {
+    position: 'bottomleft'
+  });
+
+	legend.onAdd = function (map) {
+
+		var div = L.DomUtil.create('div', 'info legend'),
+            grades = ["None", "D0", "D1", "D2", "D3", "D4"],
+      			labels = [],
+			      from, to;
+
+		for (var i = 0; i < grades.length; i++) {
+			from = grades[i];
+			to = grades[i + 1];
+
+			labels.push(
+                '<i style="background:' + getColor(from + 1) + '"></i> ' 
+                + from); 
+                // + (to ? '&ndash;' + to : '+'));
+		}
+
+		div.innerHTML = labels.join('<br>');
+		return div;
+	};
+
+	legend.addTo(myMap);
+});
+
