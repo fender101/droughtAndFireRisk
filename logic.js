@@ -58,15 +58,16 @@ omnivore.csv('./fire.csv').on('ready', function(layer) {
     this.eachLayer(function(marker) {
       marker.setIcon(L.icon({
         iconUrl: './fire-element.png',
-        iconSize: [29, 24],
+        iconSize: [marker.toGeoJSON().properties.Range, marker.toGeoJSON().properties.Range],
         iconAnchor: [9, 21],
         popupAnchor: [0, -14]
       }));
 
       console.log (marker.toGeoJSON())
-        marker.bindPopup(marker.toGeoJSON().properties.Location + ', ' +
-        marker.toGeoJSON().properties.Deaths);
-    });
+			marker.bindPopup("<h3>" + marker.toGeoJSON().properties.Name + ' Fire, ' +
+			marker.toGeoJSON().properties.Start_Date + ", # of Deaths = " + 
+			marker.toGeoJSON().properties.Deaths + "</h3><hr>");
+	});
 
   }).addTo(fire);
 
