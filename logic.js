@@ -79,7 +79,7 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
   function(data) {
     droughtData = data;
 
-	// control that shows state info on hover
+	// control that shows info on hover
 	var info = L.control();
 
 	info.onAdd = function (map) {
@@ -90,7 +90,7 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 
 	info.update = function (props) {
 		this._div.innerHTML = '<h4></h4>' +  (props ?
-			'<b>' + props.name + '</b><br/>' + props.type
+			'<b>' + props.features.properties.risk.name + '</b><br/>' + props.features.properties.risk.type
 			: '')
 	};
 
