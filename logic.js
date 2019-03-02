@@ -89,9 +89,9 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 	};
 
 	info.update = function (props) {
-		this._div.innerHTML = '<h4>n</h4>' +  (props ?
-			'<b>' + props.name + '</b><br />' + props.type
-			: 'n')
+		this._div.innerHTML = '<h4></h4>' +  (props ?
+			'<b>' + props.name + '</b><br/>' + props.type
+			: '')
 	};
 
 	info.addTo(myMap);
