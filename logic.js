@@ -149,7 +149,7 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 		layer.on({
 			mouseover: highlightFeature,
 			mouseout: resetHighlight,
-			click: zoomToFeature
+			// click: zoomToFeature
 		});
 	}
 
