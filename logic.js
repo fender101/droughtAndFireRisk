@@ -170,30 +170,30 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 		onEachFeature: onEachFeature
 	}).addTo(myMap);
 
-	var legend = L.control(  {
-    position: 'bottomleft'
-  });
+	// var legend = L.control(  {
+  //   position: 'bottomleft'
+  // });
 
-	legend.onAdd = function (map) {
+	// legend.onAdd = function (map) {
 
-		var div = L.DomUtil.create('div', 'info legend'),
-            grades = ["None", "D0", "D1", "D2", "D3", "D4"],
-      			labels = [],
-			      from, to;
+	// 	var div = L.DomUtil.create('div', 'info legend'),
+  //           grades = ["None", "D0", "D1", "D2", "D3", "D4"],
+  //     			labels = [],
+	// 		      from, to;
 
-		for (var i = 0; i < grades.length; i++) {
-			from = grades[i];
-			to = grades[i + 1];
+	// 	for (var i = 0; i < grades.length; i++) {
+	// 		from = grades[i];
+	// 		to = grades[i + 1];
 
-			labels.push(
-                '<i style="background:' + getColor(from + 1) + '"></i> ' 
-                + from); 
-                // + (to ? '&ndash;' + to : '+'));
-		}
+	// 		labels.push(
+  //               '<i style="background:' + getColor(from + 1) + '"></i> ' 
+  //               + from); 
+  //               // + (to ? '&ndash;' + to : '+'));
+	// 	}
 
-		div.innerHTML = labels.join('<br>');
-		return div;
-	};
+	// 	div.innerHTML = labels.join('<br>');
+	// 	return div;
+	// };
 
 	legend.addTo(myMap);
 });
