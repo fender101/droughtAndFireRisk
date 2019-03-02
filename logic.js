@@ -137,8 +137,10 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 
 	var geojson;
 	var lyrChart;
+	var draugtlevels;
 
 	lyrChart = L.imageOverlay("./chart.png", [[36.05, -132.05], [34.05, -122.05]]).addTo(myMap);
+	lyrChart = L.imageOverlay("./draughtlevel.png", [[33.05, -132.05], [31.05, -122.05]]).addTo(myMap);
 
 	function resetHighlight(e) {
 		geojson.resetStyle(e.target);
