@@ -80,6 +80,12 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
   function(data) {
     droughtData = data;
 
+// Binding a pop-up to each layer
+		onEachFeature: function(feature, layer) {
+		layer.bindPopup(feature.properties.details.risk.type + " - " + feature.properties.details.risk.name)};
+// }).addTo(myMap);
+
+
 	// control that shows info on hover
 	var info = L.control();
 
@@ -140,7 +146,7 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 	var draugtlevels;
 
 	lyrChart = L.imageOverlay("./chart.png", [[36.05, -132.05], [34.05, -122.05]]).addTo(myMap);
-	lyrChart = L.imageOverlay("./draughtlevel.png", [[33.05, -132.05], [31.05, -122.05]]).addTo(myMap);
+	lyrChart = L.imageOverlay("./draughtlevel.png", [[33.55, -132.05], [31.75, -122.05]]).addTo(myMap);
 
 	function resetHighlight(e) {
 		geojson.resetStyle(e.target);
