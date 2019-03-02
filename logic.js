@@ -65,7 +65,7 @@ omnivore.csv('./fire.csv').on('ready', function(layer) {
 
       console.log (marker.toGeoJSON())
 			marker.bindPopup("<h3>" + marker.toGeoJSON().properties.Name + ' Fire ' + "<br>" +
-			marker.toGeoJSON().properties.Start_Date + " # of Deaths = " + "<br>" + 
+			marker.toGeoJSON().properties.Start_Date + " # of Deaths = " + 
 			marker.toGeoJSON().properties.Deaths + "</h3><hr>");
 	});
 
