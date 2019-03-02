@@ -1,0 +1,147 @@
+﻿County,Acres,Drought,Date
+Fresno,145000,2,Apr-19
+Riverside,45000,2,Apr-19
+Fresno,225000,18,Apr-19
+Madera,45000,20,Apr-19
+San Bernardino,65000,21,Apr-19
+Tulare,345000,21,Apr-19
+Siskiyou,1345000,21,Apr-19
+Riverside,145000,21,Apr-19
+San Luis Obispo,65000,21,May-19
+Yolo,65000,21,May-19
+San Luis Obispo,605000,21,May-19
+Butte,145000,21,May-19
+Santa Barbara,385000,21,May-19
+Monterey,65000,21,May-19
+Fresno,1005000,21,May-19
+Lassen,1705000,21,May-19
+Mariposa,1665000,21,May-19
+Modoc,1685000,21,May-19
+Siskiyou,565000,21,May-19
+Mariposa,145000,21,May-19
+Modoc,185000,21,May-19
+Siskiyou,85000,21,May-19
+Mariposa,165000,21,May-19
+Riverside,45000,21,May-19
+Siskiyou,1605000,21,May-19
+Tulare,765000,21,May-19
+Madera,265000,21,May-19
+Butte,105000,21,May-19
+Lassen,145000,21,May-19
+Mono,205000,21,May-19
+Trinity,465000,21,May-19
+Los Angeles,165000,21,May-19
+Riverside,105000,21,May-19
+Madera,45000,21,May-19
+Trinity,285000,21,May-19
+Tulare,405000,21,May-19
+Riverside,85000,21,May-19
+Butte,185000,21,May-19
+Napa/Solano,1065000,32,May-19
+Napa/Sonoma,765000,32,Jun-19
+Sonoma,1165000,35,Jun-19
+Mendocino,765000,35,Jun-19
+Butte,145000,35,Jun-19
+Yuba,225000,38,Jun-19
+Lake,65000,38,Jun-19
+Orange,205000,38,Jun-19
+Sonoma,65000,38,Jun-19
+Sonoma,365000,38,Jun-19
+Nevada,45000,39,Jun-19
+San Diego,45000,43,Jun-19
+Riverside,45000,43,Jun-19
+Ventura/Santa Barbara,5665000,45,Jun-19
+Los Angeles,345000,45,Jun-19
+Los Angeles,145000,45,Jun-19
+San Diego,105000,45,Jun-19
+Lassen,85000,45,Jun-19
+Placer,145000,45,Jun-19
+Monterey,2665000,45,Jun-19
+Santa Barbara,165000,46,Jun-19
+Sonoma,65000,46,Jun-19
+Los Angeles,845000,46,Jun-19
+Los Angeles,125000,46,Jun-19
+Los Angeles,45000,46,Jun-19
+San Diego,45000,46,Jun-19
+San Luis Obispo,105000,46,Jun-19
+Santa Barbara,685000,46,Jun-19
+Siskiyou,85000,46,Jun-19
+Ventura,65000,46,Jun-19
+San Bernardino,185000,46,Jun-19
+Mono,125000,46,Jul-19
+Fresno,165000,46,Jul-19
+Monterey,105000,46,Jul-19
+Tuolumne,45000,46,Jul-19
+Santa Clara,105000,46,Jul-19
+Fresno,65000,47,Jul-19
+Siskiyou,705000,47,Jul-19
+Kern,985000,47,Jul-19
+Kern,65000,47,Jul-19
+Fresno,85000,47,Jul-19
+Monterey,85000,47,Jul-19
+Yolo,145000,47,Jul-19
+Lake,105000,47,Jul-19
+San Luis Obispo,945000,47,Jul-19
+Kern,605000,47,Jul-19
+Santa Barbara,285000,47,Jul-19
+San Diego,185000,47,Jul-19
+Riverside,45000,44,Jul-19
+San Bernardino,745000,44,Jul-19
+Inyo,165000,41,Jul-19
+Riverside,45000,41,Jul-19
+San Bernardino,645000,40,Jul-19
+San Luis Obispo,65000,40,Jul-19
+San Bernardino,105000,40,Jul-19
+Napa,185000,40,Jul-19
+Lake,1405000,41,Jul-19
+Shasta,765000,40,Jul-19
+Trinity,1565000,40,Jul-19
+Lassen,125000,40,Jul-19
+Humboldt,125000,39,Jul-19
+Humboldt,1485000,39,Jul-19
+Fresno,3065000,32,Aug-19
+Lassen,245000,32,Aug-19
+Del Norte,625000,32,Aug-19
+Lake and Napa,525000,32,Aug-19
+Glendora,65000,55,Aug-19
+San Luis Obispo,65000,55,Aug-19
+Alameda,85000,55,Aug-19
+Amador,1445000,55,Aug-19
+Lake,1545000,55,Aug-19
+Monterey,45000,55,Aug-19
+Ventura,45000,58,Aug-19
+Tulare,65000,58,Aug-19
+Los Angeles,65000,58,Aug-19
+San Bernardino,65000,58,Aug-19
+San Diego,65000,58,Aug-19
+San Diego,125000,58,Aug-19
+San Diego,45000,58,Aug-19
+San Diego,65000,58,Aug-19
+San Diego,305000,58,Aug-19
+San Diego,45000,58,Aug-19
+Kern,85000,58,Aug-19
+Monterey,125000,58,Aug-19
+Napa,105000,58,Aug-19
+Modoc,85000,58,Aug-19
+Yolo,145000,36,Aug-19
+Shasta,285000,36,Aug-19
+Kern,65000,36,Aug-19
+Mariposa,45000,36,Sep-19
+El Dorado,105000,33,Sep-19
+Merced,45000,33,Sep-19
+Mariposa,125000,25,Sep-19
+Madera,305000,25,Sep-19
+Modoc,285000,25,Sep-19
+Mendocino,285000,25,Sep-19
+Shasta,825000,25,Sep-19
+Trinity,145000,25,Sep-19
+Siskiyou,665000,25,Sep-19
+Siskiyou,145000,25,Sep-19
+Shasta,665000,23,Sep-19
+Siskiyou,1025000,23,Sep-19
+Siskiyou,2705000,23,Sep-19
+Mariposa,125000,23,Sep-19
+Kern,105000,22,Sep-19
+Shasta,45000,22,Sep-19
+El Dorado,1985000,22,Sep-19
+Siskiyou,45000,15,Sep-19
