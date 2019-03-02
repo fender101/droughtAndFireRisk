@@ -80,10 +80,10 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
   function(data) {
     droughtData = data;
 
-// Binding a pop-up to each layer
-		onEachFeature: function(feature, layer) {
-		layer.bindPopup(feature.properties.details.risk.type + " - " + feature.properties.details.risk.name)};
-// }).addTo(myMap);
+// // Binding a pop-up to each layer
+// 		onEachFeature: function(feature, layer) {
+// 		layer.bindPopup(feature.properties.details.risk.type + " - " + feature.properties.details.risk.name)};
+// // }).addTo(myMap);
 
 
 	// control that shows info on hover
