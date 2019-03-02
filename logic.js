@@ -88,11 +88,11 @@ d3.json("https://api.aerisapi.com/droughts/monitor/search?filter=all,geo&sort=co
 		return this._div;
 	};
 
-	// info.update = function (props) {
-	// 	this._div.innerHTML = '<h4>Drought Status</h4>' +  (props ?
-	// 		'<b>' + props.name + '</b><br />' + props.type
-	// 		: 'Hover over drought area')
-	// };
+	info.update = function (props) {
+		this._div.innerHTML = '<h4></h4>' +  (props ?
+			'<b>' + props.name + '</b><br />' + props.type
+			: '')
+	};
 
 	info.addTo(myMap);
 
