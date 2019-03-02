@@ -27,11 +27,27 @@ var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
     accessToken: API_KEY
   });
 
+	var natlparks = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.run-bike-hike",
+    accessToken: API_KEY
+  });
+
+	var comics = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+    attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+    maxZoom: 18,
+    id: "mapbox.comic",
+    accessToken: API_KEY
+  });
+
 
 // Define a baseMaps object to hold base layers
   var baseMaps = {
     "Street Map": streetmap,
-    "Dark Map": darkmap
+		"Dark Map": darkmap,
+		"Natl. Parks": natlparks,
+		"Cartoon Map": comics
   };
 
   // Create overlay object to hold overlay layer
