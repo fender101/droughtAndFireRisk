@@ -1,2 +1,14 @@
-// API key
-var API_KEY = "pk.eyJ1IjoiZmVuZGVyMTAxIiwiYSI6ImNqcnhzbHBsMjBxeG80M3VrY2pyN2x2ZTIifQ.qh6jEOv7_wcwUpfl_boAaw"
+// Mapbox API key
+const API_KEY = "use_your_key";
+
+// Aeris key and info
+
+const apiId = "use_your_key";
+
+const apiSecret = "use_your_key";
+
+
+// aeris.config.set({
+//     apiId:  'use_your_key',
+//     apiSecret:  'use_your_key'
+//     })
